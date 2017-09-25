@@ -8,9 +8,9 @@ tf::Point ForwardKinematics( double q1, double q2, double q3 ){
   // TODO
   // Fill the values of the forward kinematics
   double x, y, z;
-  // x = TODO
-  // y = TODO
-  // z = TODO
+  x = (17*cos(q1)*cos(q2))/40 - (3829*sin(q1))/20000 + (4869*cos(q1)*cos(q2)*cos(q3))/10000 - (4869*cos(q1)*sin(q2)*sin(q3))/10000
+  y = (3829*cos(q1))/20000 + (17*cos(q2)*sin(q1))/40 - (4869*sin(q1)*sin(q2)*sin(q3))/10000 + (4869*cos(q2)*cos(q3)*sin(q1))/10000
+  z = 6424583026827617/72057594037927936 - (17*sin(q2))/40 - (4869*sin(q2 + q3))/10000
   
   return tf::Point( x, y, z );
   
@@ -28,17 +28,17 @@ void Jacobian( double q1, double q2, double q3, double J[3][3] ){
   
   // TODO
   // Fill the values of the Jacobian matrix J
-  // J[0][0] = TODO
-  // J[0][1] = TODO
-  // J[0][2] = TODO
+  J[0][0] = (4869*sin(q1)*sin(q2)*sin(q3))/10000 - (17*cos(q2)*sin(q1))/40 - (3829*cos(q1))/20000 - (4869*cos(q2)*cos(q3)*sin(q1))/10000
+  J[0][1] = - (17*cos(q1)*sin(q2))/40 - (4869*cos(q1)*cos(q2)*sin(q3))/10000 - (4869*cos(q1)*cos(q3)*sin(q2))/10000
+  J[0][2] = - (4869*cos(q1)*cos(q2)*sin(q3))/10000 - (4869*cos(q1)*cos(q3)*sin(q2))/10000
   
-  // J[1][0] = TODO
-  // J[1][1] = TODO
-  // J[1][2] = TODO
+  J[1][0] = (17*cos(q1)*cos(q2))/40 - (3829*sin(q1))/20000 + (4869*cos(q1)*cos(q2)*cos(q3))/10000 - (4869*cos(q1)*sin(q2)*sin(q3))/10000
+  J[1][1] = - (17*sin(q1)*sin(q2))/40 - (4869*cos(q2)*sin(q1)*sin(q3))/10000 - (4869*cos(q3)*sin(q1)*sin(q2))/10000
+  J[1][2] = - (4869*cos(q2)*sin(q1)*sin(q3))/10000 - (4869*cos(q3)*sin(q1)*sin(q2))/10000
   
-  // J[2][0] = TODO
-  // J[2][1] = TODO
-  // J[2][2] = TODO
+  J[2][0] = 0
+  J[2][1] = - (4869*cos(q2 + q3))/10000 - (17*cos(q2))/40
+  J[2][2] = -(4869*cos(q2 + q3))/10000
   
 }
 
